@@ -1,40 +1,59 @@
+# labels.rb :  A simple helper to generate labels for Prawn PDFs
+#
+# Copyright February 2010, Jordan Byron. All Rights Reserved.
+#
+# This is free software. Please see the LICENSE and COPYING files for details.
+
 require 'prawn/layout'
 
-module Prawn
-  class Document
+module Prawn    
+  class Labels
+    attr_reader :document, :type
     
-    def labels(data, options={}, &block)
-      @labels = Labels.new(data,options,&block)
+    def self.generate(file_name, options = {}, &block)                               
+      labels = Labels.new(options,&block)
+      
+      labels.document.render_file(file_name)
     end
     
-    
-    class Labels
-      attr_reader :labels, :data
+    def initialize(options={}, &block)
+      types_file = File.join(File.dirname(__FILE__), 'types.yaml')
+      types      = YAML.load_file(types_file)
       
-      # Creates the label grid and a label object for each data element
-      def initialize(data, options = {}, &block)
-        @data = data
-        
-        generate_labels
-        
-        define_grid
+      unless type = types[options[:type]]
+        raise "Label Type Unknown '#{options[:type]}'" 
       end
-  
-      class Label
-        attr_reader :data
-        
-        def initialize(data)
-          @data = data
-        end
+      
+      @document = Document.new  :left_margin  => type["left_margin"], 
+                                :right_margin => type["right_margin"]
+                                
+      generate_grid type
+      
+      create_labels do |pdf,cell|
+        yield pdf,cell
       end
-  
-      private
-  
-      def generate_labels
-        @labels = []
+      
+    end
     
-        @data.each do |d|
-          @labels << Label.new(data)
+    private
+    
+    def generate_grid(type)
+      
+      @document.instance_eval do
+        define_grid  :columns       => type["columns"], 
+                     :rows          => type["rows"], 
+                     :column_gutter => type["column_gutter"],
+                     :row_gutter    => type["row_gutter"]
+      end
+    end
+  
+    def create_labels(&block)
+      @document.grid.rows.times do |i|
+        @document.grid.columns.times do |j|
+          b = @document.grid(i,j)
+          @document.bounding_box b.top_left, :width => b.width, :height => b.height do
+            yield(@document, b)
+          end
         end
       end
     end

@@ -1,0 +1,15 @@
+#
+# prawns' basic unit is PostScript-Point        
+# 72 points per inch
+#
+Avery5160:
+  left_margin: 15.822
+  right_margin: 15.822
+  columns: 3
+  rows: 10
+  column_gutter: 10
+  row_gutter: 0
+TEST:
+  left_margin: 123
+  right_margin: 789
+  

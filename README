@@ -1,0 +1,7 @@
+== Prawn/Labels: A simple helper to generate labels for Prawn PDFs
+
+Prawn/Labels takes the guess work out of generating labels using Prawn
+
+== Usage
+
+See the examples/ directory
