@@ -3,5 +3,17 @@
 Prawn/Labels takes the guess work out of generating labels using Prawn
 
 == Usage
+  
+  require 'prawn/labels'
 
-See the examples/ directory
+  names = ["Jordan", "Chris", "Jon", "Mike", "Kelly", "Bob", "Greg"]
+
+  Prawn::Labels.generate("names.pdf", names, :type => "Avery5160") do |pdf, name|
+    pdf.text name
+  end
+  
+This creates a document with the a name from the names array in each label. The labels will be formatted for Avery 5160 labels. Formats are defined in the prawn/labels/types.yaml file.
+
+== Contributors
+
+Jordan Byron <jordan@ducksoupsoftware.com>
