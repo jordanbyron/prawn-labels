@@ -12,7 +12,7 @@ Prawn/Labels takes the guess work out of generating labels using Prawn
     pdf.text name
   end
   
-This creates a document with the a name from the names array in each label. The labels will be formatted for Avery 5160 labels. Formats are defined in the prawn/labels/types.yaml file.
+This creates a document with a name from the names array in each label. The labels will be formatted for Avery 5160 labels. Formats are defined in the prawn/labels/types.yaml file.
 
 == Contributors
 
