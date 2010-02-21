@@ -10,13 +10,13 @@ module Prawn
   class Labels
     attr_reader :document, :type
     
-    def self.generate(file_name, options = {}, &block)                               
-      labels = Labels.new(options,&block)
+    def self.generate(file_name, data, options = {}, &block)                               
+      labels = Labels.new(data, options,&block)
       
       labels.document.render_file(file_name)
     end
     
-    def initialize(options={}, &block)
+    def initialize(data, options={}, &block)
       types_file = File.join(File.dirname(__FILE__), 'types.yaml')
       types      = YAML.load_file(types_file)
       
@@ -29,8 +29,10 @@ module Prawn
                                 
       generate_grid type
       
-      create_labels do |pdf,cell|
-        yield pdf,cell
+      data.each_with_index do |record, i|
+        create_label(i, record) do |pdf, record|
+          yield pdf, record
+        end
       end
       
     end
@@ -47,14 +49,26 @@ module Prawn
       end
     end
   
-    def create_labels(&block)
-      @document.grid.rows.times do |i|
-        @document.grid.columns.times do |j|
-          b = @document.grid(i,j)
-          @document.bounding_box b.top_left, :width => b.width, :height => b.height do
-            yield(@document, b)
+    def row_col_from_index(i)
+      index = 0
+      
+      @document.grid.rows.times do |r|    
+        @document.grid.columns.times do |c|
+          if index == i
+            return [r,c]
+          else
+            index += 1
           end
         end
+      end
+    end
+  
+    def create_label(i,record,&block)
+      p = row_col_from_index(i)
+
+      b = @document.grid(p.first, p.last)
+      @document.bounding_box b.top_left, :width => b.width, :height => b.height do
+        yield(@document, record)
       end
     end
   end
