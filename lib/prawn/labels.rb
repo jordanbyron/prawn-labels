@@ -20,14 +20,14 @@ module Prawn
       types_file = File.join(File.dirname(__FILE__), 'types.yaml')
       types      = YAML.load_file(types_file)
       
-      unless type = types[options[:type]]
+      unless @type = types[options[:type]]
         raise "Label Type Unknown '#{options[:type]}'" 
       end
       
       @document = Document.new  :left_margin  => type["left_margin"], 
                                 :right_margin => type["right_margin"]
                                 
-      generate_grid type
+      generate_grid @type
       
       data.each_with_index do |record, i|
         create_label(i, record) do |pdf, record|
@@ -50,7 +50,7 @@ module Prawn
     end
   
     def row_col_from_index(i)
-      index = 0
+      index = (@document.page_number - 1) * (@document.grid.rows * @document.grid.columns)
       
       @document.grid.rows.times do |r|    
         @document.grid.columns.times do |c|
@@ -61,6 +61,10 @@ module Prawn
           end
         end
       end
+      
+      @document.start_new_page
+      generate_grid @type
+      [0,0]
     end
   
     def create_label(i,record,&block)
