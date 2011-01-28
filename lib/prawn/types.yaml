@@ -12,4 +12,14 @@ Avery5160:
 TEST:
   left_margin: 123
   right_margin: 789
-  
+tyton:
+  page_size: LETTER
+  top_margin: 72
+  bottom_margin: 5.7
+  left_margin: 24.09
+  right_margin: 19.84
+  row_gutter: 7.08
+  column_gutter: 21.6
+  columns: 4
+  rows: 3
+  label_height: 56.69
