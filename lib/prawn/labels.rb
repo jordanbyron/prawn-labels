@@ -11,9 +11,13 @@ module Prawn
     attr_reader :document, :type
     
     def self.generate(file_name, data, options = {}, &block)                               
-      labels = Labels.new(data, options,&block)
-      
+      labels = Labels.new(data, options, &block)
       labels.document.render_file(file_name)
+    end
+
+    def self.render(data, options = {}, &block)                               
+      labels = Labels.new(data, options, &block)
+      labels.document.render
     end
     
     def initialize(data, options={}, &block)
@@ -24,8 +28,15 @@ module Prawn
         raise "Label Type Unknown '#{options[:type]}'" 
       end
       
-      @document = Document.new  :left_margin  => type["left_margin"], 
-                                :right_margin => type["right_margin"]
+      type["paper_size"] ||= "A4"
+      type["top_margin"] ||= 36
+      type["top_margin"] ||= 36
+      
+      @document = Document.new  :page_size      => type["paper_size"],
+                                :top_margin     => type["top_margin"],
+                                :bottom_margin  => type["bottom_margin"],
+                                :left_margin    => type["left_margin"],
+                                :right_margin   => type["right_margin"]
                                 
       generate_grid @type
       
@@ -67,7 +78,7 @@ module Prawn
       [0,0]
     end
   
-    def create_label(i,record,&block)
+    def create_label(i, record, &block)
       p = row_col_from_index(i)
 
       b = @document.grid(p.first, p.last)
