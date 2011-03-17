@@ -14,10 +14,10 @@ Prawn/Labels takes the guess work out of generating labels using Prawn
   end
 
   # Render a PDF file and send to browser
-  Prawn::Labels.render(names, :type => "Avery5160") do |pdf, name|
+  labels = Prawn::Labels.render(names, :type => "Avery5160") do |pdf, name|
     pdf.text name
   end
-  send_data sheet, :filename => "names.pdf", :type => "application/pdf"
+  send_data labels, :filename => "names.pdf", :type => "application/pdf"
 
 This creates a document with a name from the names array in each label. The labels will be formatted for Avery 5160 labels. Formats are defined in the prawn/labels/types.yaml file.
 
