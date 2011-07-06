@@ -38,12 +38,12 @@ module Prawn
                                 :bottom_margin  => type["bottom_margin"],
                                 :left_margin    => type["left_margin"],
                                 :right_margin   => type["right_margin"]
-                                
+
       generate_grid @type
       
       data.each_with_index do |record, i|
         create_label(i, record) do |pdf, record|
-          yield pdf, record
+          block[pdf, record]
         end
       end
       
@@ -52,36 +52,33 @@ module Prawn
     private
     
     def generate_grid(type)
-      
-      @document.instance_eval do
-        define_grid  :columns       => type["columns"], 
-                     :rows          => type["rows"], 
-                     :column_gutter => type["column_gutter"],
-                     :row_gutter    => type["row_gutter"]
-      end
+      @document.define_grid({ :columns       => type["columns"], 
+                              :rows          => type["rows"], 
+                              :column_gutter => type["column_gutter"],
+                              :row_gutter    => type["row_gutter"],
+                            })
     end
   
     def row_col_from_index(i)
-      index = (@document.page_number - 1) * (@document.grid.rows * @document.grid.columns)
-      
-      @document.grid.rows.times do |r|    
-        @document.grid.columns.times do |c|
-          if index == i
-            return [r,c]
-          else
-            index += 1
-          end
-        end
+      page, newi = i.divmod(@document.grid.rows * @document.grid.columns)
+      if newi == 0 and page > 0
+        @document.start_new_page
+        generate_grid @type
+        return [0,0]
       end
-      
-      @document.start_new_page
-      generate_grid @type
-      [0,0]
+      return newi.divmod(@document.grid.columns)      
     end
   
     def create_label(i, record, &block)
       p = row_col_from_index(i)
-
+      linecount = (split_lines = record.split("\n")).length
+      split_lines.each {|line| linecount += line.length/30} #30 is estimated max character length per line.
+      rowheight = @document.grid.row_height-10 #the -10 accounts for the overflow margins
+      if linecount<=(rowheight)/12.floor
+        @document.font_size=(12)
+      else
+        @document.font_size=(rowheight/(linecount+1)) #the +1 reduces it enough
+      end
       b = @document.grid(p.first, p.last)
       @document.bounding_box b.top_left, :width => b.width, :height => b.height do
         yield(@document, record)
