@@ -21,7 +21,7 @@ module Prawn
       labels.document.render
     end
     
-    def initialize(data, options={}, &block)
+    def initialize(data, options = {}, &block)
       types_file = File.join(File.dirname(__FILE__), 'types.yaml')
       types      = YAML.load_file(types_file)
       
@@ -42,7 +42,7 @@ module Prawn
       generate_grid @type
       
       data.each_with_index do |record, i|
-        create_label(i, record) do |pdf, record|
+        create_label(i, record, options) do |pdf, record|
           block[pdf, record]
         end
       end
@@ -69,8 +69,16 @@ module Prawn
       return newi.divmod(@document.grid.columns)      
     end
   
-    def create_label(i, record, &block)
-      p = row_col_from_index(i)
+    def create_label(i, record, options = {},  &block)
+     p = row_col_from_index(i)
+     shrink_text(record) if options[:shrink_to_fit] == true
+     b = @document.grid(p.first, p.last)
+      @document.bounding_box b.top_left, :width => b.width, :height => b.height do
+        block[@document, record]
+      end
+    end
+
+    def shrink_text(record)
       linecount = (split_lines = record.split("\n")).length
       split_lines.each {|line| linecount += line.length/30} #30 is estimated max character length per line.
       rowheight = @document.grid.row_height-10 #the -10 accounts for the overflow margins
@@ -78,10 +86,6 @@ module Prawn
         @document.font_size=(12)
       else
         @document.font_size=(rowheight/(linecount+1)) #the +1 reduces it enough
-      end
-      b = @document.grid(p.first, p.last)
-      @document.bounding_box b.top_left, :width => b.width, :height => b.height do
-        yield(@document, record)
       end
     end
   end
