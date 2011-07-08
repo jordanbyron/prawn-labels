@@ -33,5 +33,5 @@ For a full list of examples, take a look in the `examples` folder.
 ## Contributors
 
 - [Jordan Byron](http://jordanbyron.com)
-- [David Speake](david@verycleverstuff.co.uk)
-- [Carlo Biedenharn](cbieden@mit.edu)
+- [David Speake](mailto:david@verycleverstuff.co.uk)
+- [Carlo Biedenharn](mailto:cbieden@mit.edu)
