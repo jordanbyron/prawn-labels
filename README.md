@@ -2,6 +2,12 @@
 
 Prawn/Labels takes the guess work out of generating labels using Prawn ~> 0.11.1
 
+## Install
+
+```bash
+$ gem install prawn-labels
+```
+
 ## Usage
 
 ```ruby
