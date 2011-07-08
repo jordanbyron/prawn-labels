@@ -4,7 +4,7 @@
 #
 # This is free software. Please see the LICENSE and COPYING files for details.
 
-require 'prawn'
+require 'prawn/layout'
 require 'yaml'
 
 module Prawn
