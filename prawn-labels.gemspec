@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Jordan Byron"]
   spec.email = ["jordan.byron@gmail.com"]
   spec.rubyforge_project = "prawn-labels"
-  spec.add_dependency('prawn', '~>0.11.1')
+  spec.add_dependency('prawn', '~>0.12.0')
   spec.homepage = "http://github.com/jordanbyron/prawn-labels"
   spec.description = <<END_DESC
   Prawn/Labels takes the guess work out of generating labels using Prawn
