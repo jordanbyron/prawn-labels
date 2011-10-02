@@ -76,17 +76,21 @@ module Prawn
       shrink_text(record) if options[:shrink_to_fit] == true
 
       b = @document.grid(p.first, p.last)
-      @document.bounding_box b.top_left, :width => b.width, :height => b.height do
-        if @vertical_text
-          @document.rotate(270, :origin => b.top_left) do
-            @document.translate(0, b.width) do
+      
+      if @vertical_text
+        @document.rotate(270, :origin => b.top_left) do
+          @document.translate(0, b.width) do
+            @document.bounding_box b.top_left, :width => b.height, :height => b.width do
               yield @document, record
             end
           end
-        else
+        end
+      else
+        @document.bounding_box b.top_left, :width => b.width, :height => b.height do
           yield @document, record
         end
       end
+
     end
 
     def shrink_text(record)
