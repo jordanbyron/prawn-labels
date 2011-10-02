@@ -32,7 +32,7 @@ module Prawn
       type["paper_size"] ||= "A4"
       type["top_margin"] ||= 36
       type["left_margin"] ||= 36
-      @rotated = !!type["rotated"]
+      @vertical_text = !!type["vertical_text"]
 
       @document = Document.new  :page_size      => type["paper_size"],
                                 :top_margin     => type["top_margin"],
@@ -56,7 +56,7 @@ module Prawn
       @document.define_grid({ :columns       => type["columns"],
                               :rows          => type["rows"],
                               :column_gutter => type["column_gutter"],
-                              :row_gutter    => type["row_gutter"],
+                              :row_gutter    => type["row_gutter"]
                             })
     end
 
@@ -77,7 +77,7 @@ module Prawn
 
       b = @document.grid(p.first, p.last)
       @document.bounding_box b.top_left, :width => b.width, :height => b.height do
-        if @rotated
+        if @vertical_text
           @document.rotate(270, :origin => b.top_left) do
             @document.translate(0, b.width) do
               yield @document, record

@@ -27,7 +27,7 @@ Avery5160:
 #Standard #10 envelope
 Envelope10:
     paper_size: [297, 595.28]
-    rotated: true
+    vertical_text: true
     columns: 1
     rows: 1
     right_margin: 180
