@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(File.expand_path('../lib', File.dirname(__FILE__)))
 require 'rubygems'
 require 'prawn/core'
 require 'prawn/labels'
