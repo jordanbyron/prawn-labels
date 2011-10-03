@@ -41,3 +41,4 @@ For a full list of examples, take a look in the `examples` folder.
 - [Jordan Byron](http://jordanbyron.com)
 - [David Speake](mailto:david@verycleverstuff.co.uk)
 - [Carlo Biedenharn](mailto:cbieden@mit.edu)
+- [Forrest Zeisler](https://github.com/forrest)
