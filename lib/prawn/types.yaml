@@ -4,7 +4,7 @@
 #
 # Avery 7160 family: Mailing labels, 63.5 x 38.1 mm, 21 per sheet
 Avery7160:
-    page_size: A4
+    paper_size: A4
     top_margin: 43.9
     bottom_margin: 0
     left_margin: 19.843
@@ -15,7 +15,7 @@ Avery7160:
     row_gutter: 0
 # Avery 5160 family
 Avery5160:
-    page_size: A4
+    paper_size: A4
     top_margin: 36
     bottom_margin: 36
     left_margin: 15.822
@@ -24,6 +24,17 @@ Avery5160:
     rows: 10
     column_gutter: 10
     row_gutter: 0
+#Standard #10 envelope
+Envelope10:
+    paper_size: [297, 595.28]
+    vertical_text: true
+    columns: 1
+    rows: 1
+    right_margin: 180
+    left_margin: 36
+    top_margin: 108
+    bottom_margin: 208
+
 TEST:
     left_margin: 123
     right_margin: 789
