@@ -29,10 +29,11 @@ module Prawn
         raise "Label Type Unknown '#{options[:type]}'"
       end
 
-      type["paper_size"] ||= "A4"
-      type["top_margin"] ||= 36
+      type["paper_size"]  ||= "A4"
+      type["top_margin"]  ||= 36
       type["left_margin"] ||= 36
-      @vertical_text = !!type["vertical_text"]
+
+      options.merge!(:vertical_text => true) if type["vertical_text"]
 
       @document = Document.new  :page_size      => type["paper_size"],
                                 :top_margin     => type["top_margin"],
@@ -42,8 +43,8 @@ module Prawn
 
       generate_grid @type
 
-      data.each_with_index do |record, i|
-        create_label(i, record, options) do |pdf, record|
+      data.each_with_index do |record, index|
+        create_label(index, record, options) do |pdf, record|
           yield pdf, record
         end
       end
@@ -60,24 +61,24 @@ module Prawn
                             })
     end
 
-    def row_col_from_index(i)
-      page, newi = i.divmod(@document.grid.rows * @document.grid.columns)
-      if newi == 0 and page > 0
+    def row_col_from_index(index)
+      page, new_index = index.divmod(@document.grid.rows * @document.grid.columns)
+      if new_index == 0 and page > 0
         @document.start_new_page
         generate_grid @type
         return [0,0]
       end
-      return newi.divmod(@document.grid.columns)
+      return new_index.divmod(@document.grid.columns)
     end
 
-    def create_label(i, record, options = {},  &block)
-      p = row_col_from_index(i)
+    def create_label(index, record, options = {},  &block)
+      p = row_col_from_index(index)
 
       shrink_text(record) if options[:shrink_to_fit] == true
 
       b = @document.grid(p.first, p.last)
-      
-      if @vertical_text
+
+      if options[:vertical_text]
         @document.rotate(270, :origin => b.top_left) do
           @document.translate(0, b.width) do
             @document.bounding_box b.top_left, :width => b.height, :height => b.width do
