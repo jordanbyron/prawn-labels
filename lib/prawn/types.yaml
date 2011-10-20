@@ -1,7 +1,8 @@
 #
-# prawns' basic unit is PostScript-Point        
+# prawns' basic unit is PostScript-Point
 # 72 points per inch
 #
+
 # Avery 7160 family: Mailing labels, 63.5 x 38.1 mm, 21 per sheet
 Avery7160:
     paper_size: A4
@@ -24,7 +25,7 @@ Avery5160:
     rows: 10
     column_gutter: 10
     row_gutter: 0
-#Standard #10 envelope
+# Standard #10 envelope
 Envelope10:
     paper_size: [297, 595.28]
     vertical_text: true
@@ -34,7 +35,7 @@ Envelope10:
     left_margin: 36
     top_margin: 108
     bottom_margin: 208
-#Avery 6572
+# Avery 6572
 Avery6572:
     paper_size: LETTER
     top_margin: 36
@@ -45,7 +46,3 @@ Avery6572:
     rows: 5
     column_gutter: 9
     row_gutter: 0
-
-TEST:
-    left_margin: 123
-    right_margin: 789
