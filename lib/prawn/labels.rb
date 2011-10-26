@@ -44,6 +44,9 @@ module Prawn
       generate_grid @type
 
       data.each_with_index do |record, index|
+        if (defined? record.vertical_text)
+          options.merge!(:vertical_text => record.vertical_text)
+        end
         create_label(index, record, options) do |pdf, record|
           yield pdf, record
         end
