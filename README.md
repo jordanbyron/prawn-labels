@@ -42,3 +42,4 @@ For a full list of examples, take a look in the `examples` folder.
 - [David Speake](mailto:david@verycleverstuff.co.uk)
 - [Carlo Biedenharn](mailto:cbieden@mit.edu)
 - [Forrest Zeisler](https://github.com/forrest)
+- [Jack Twilley](https://github.com/mathuin)
