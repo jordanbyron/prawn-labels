@@ -48,7 +48,7 @@ Prawn::Labels.generate( "names.pdf", names, :type => "Avery5160",
 end
 ```
 
-### Create custom label types
+### Custom label types
 
 If the label type you need to use isn't defined in `prawn/labels/types.yaml`
 file, you can define and load your own.
