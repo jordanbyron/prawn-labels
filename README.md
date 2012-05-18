@@ -10,47 +10,68 @@ $ gem install prawn-labels
 
 ## Usage
 
+We've tried to make generating labels as simple as possible with Prawn::Labels.
+If you have an object which responds to `each`, then you're in business.
+
+### Create and save a PDF file
+
 ```ruby
 require 'prawn/labels'
 
 names = ["Jordan", "Chris", "Jon", "Mike", "Kelly", "Bob", "Greg"]
 
-# Create and save a PDF file
 Prawn::Labels.generate("names.pdf", names, :type => "Avery5160") do |pdf, name|
   pdf.text name
 end
-
-# Render a PDF file and send to browser
-labels = Prawn::Labels.render(names, :type => "Avery5160") do |pdf, name|
-  pdf.text name
-end
-send_data labels, :filename => "names.pdf", :type => "application/pdf"
-
-# Scale text to fit label
-Prawn::Labels.generate("names.pdf", names, :type => "Avery5160", :shrink_to_fit => true) do |pdf, name|
-  pdf.text name
-end
 ```
 
-This creates a document with a name from the names array in each label. The labels will be formatted for Avery 5160 labels. Formats are defined in the prawn/labels/types.yaml file.
+This creates a document with a name from the names array in each label. The labels will be formatted for Avery 5160 labels. Formats are defined in the `prawn/labels/types.yaml` file, or by [loading a custom hash or yaml file](#custom-label-types)
 
 For a full list of examples, take a look in the `examples` folder.
 
-# Create custom labels
+### Render a PDF file and send to browser
 
-So you will not need to fork the Gem just to have your own formats you can pass the library a file name or a hash as so:
 ```ruby
-my_custom_types_file_name = File.join(File.dirname(__FILE__), "config/custom_types.yaml") 
+labels = Prawn::Labels.render(names, :type => "Avery5160") do |pdf, name|
+  pdf.text name
+end
 
-Prawn::Labels.generate("names.pdf", names, :custom_types => my_custom_types_file_name :type => "Avery5160") do |pdf, name|
+send_data labels, :filename => "names.pdf", :type => "application/pdf"
+```
+
+### Scale text to fit label
+
+```ruby
+Prawn::Labels.generate( "names.pdf", names, :type => "Avery5160",
+                        :shrink_to_fit => true) do |pdf, name|
   pdf.text name
 end
 ```
-or alternatively:
-```ruby
-my_custom_types  = {"Agipa119461"=>{"paper_size"=>"A4", "top_margin"=>36.57, "bottom_margin"=>0, "left_margin"=>20.551, "right_margin"=>20.551, "columns"=>3, "rows"=>8, "column_gutter"=>7.087, "row_gutter"=>0}} 
 
-Prawn::Labels.generate("names.pdf", names, :custom_types => my_custom_types, :type => "Agipa119461") do |pdf, name|
+### Create custom label types
+
+If the label type you need to use isn't defined in `prawn/labels/types.yaml`
+file, you can define and load your own.
+
+```ruby
+Prawn::Labels.types = '/path/to/custom/types.yaml'
+
+Prawn::Labels.generate("names.pdf", names, :type => "Custom123") do |pdf, name|
+  pdf.text name
+end
+```
+
+or using a hash:
+
+```ruby
+Prawn::Labels.types = {
+  "QuarterSheet" => {
+    "paper_size" => "A4",
+    "columns"    => 2,
+    "rows"       => 2
+}}
+
+Prawn::Labels.generate("names.pdf", names, :type => "QuarterSheet") do |pdf, name|
   pdf.text name
 end
 ```
@@ -62,3 +83,4 @@ end
 - [Carlo Biedenharn](mailto:cbieden@mit.edu)
 - [Forrest Zeisler](https://github.com/forrest)
 - [Jack Twilley](https://github.com/mathuin)
+- [Ori Pekelman](https://github.com/OriPekelman)

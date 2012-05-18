@@ -11,30 +11,37 @@ module Prawn
   class Labels
     attr_reader :document, :type
 
-    def self.generate(file_name, data, options = {}, &block)
-      labels = Labels.new(data, options, &block)
-      labels.document.render_file(file_name)
-    end
+    class << self
 
-    def self.render(data, options = {}, &block)
-      labels = Labels.new(data, options, &block)
-      labels.document.render
+      def generate(file_name, data, options = {}, &block)
+        labels = Labels.new(data, options, &block)
+        labels.document.render_file(file_name)
+      end
+
+      def render(data, options = {}, &block)
+        labels = Labels.new(data, options, &block)
+        labels.document.render
+      end
+
+      def types=(custom_types)
+        if custom_types.is_a? Hash
+          types.merge! custom_types
+        elsif custom_types.is_a?(String) && File.exist?(custom_types)
+          types.merge! YAML.load_file(custom_types)
+        end
+      end
+
+      def types
+        @types ||= begin
+          types_file = File.join(File.dirname(__FILE__), 'types.yaml')
+          YAML.load_file(types_file)
+        end
+      end
+
     end
 
     def initialize(data, options = {}, &block)
-      types_file = File.join(File.dirname(__FILE__), 'types.yaml')
-      types      = YAML.load_file(types_file)
-
-
-      if options[:custom_types].is_a? Hash then
-        types.merge!(options[:custom_types])
-      else
-        if (options[:custom_types].is_a? String) && (File.exist? options[:custom_types])
-          types.merge!(YAML.load_file(options[:custom_types]))
-        end
-      end
-      
-      unless @type = types[options[:type]]
+      unless @type = Labels.types[options[:type]]
         raise "Label Type Unknown '#{options[:type]}'"
       end
 
