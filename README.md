@@ -1,4 +1,4 @@
-# Prawn/Labels: A simple helper to generate labels for Prawn PDFs
+# Prawn/Labels: A simple label generator for Prawn PDFs
 
 Prawn/Labels takes the guess work out of generating labels using Prawn >= 0.12.0
 
