@@ -1,6 +1,6 @@
 # Prawn/Labels: A simple helper to generate labels for Prawn PDFs
 
-Prawn/Labels takes the guess work out of generating labels using Prawn ~> 0.11.1
+Prawn/Labels takes the guess work out of generating labels using Prawn >= 0.12.0
 
 ## Install
 
