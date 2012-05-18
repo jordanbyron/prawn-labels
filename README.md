@@ -36,6 +36,25 @@ This creates a document with a name from the names array in each label. The labe
 
 For a full list of examples, take a look in the `examples` folder.
 
+# Create custom labels
+
+So you will not need to fork the Gem just to have your own formats you can pass the library a file name or a hash as so:
+```ruby
+my_custom_types_file_name = File.join(File.dirname(__FILE__), "config/custom_types.yaml") 
+
+Prawn::Labels.generate("names.pdf", names, :custom_types => my_custom_types_file_name :type => "Avery5160") do |pdf, name|
+  pdf.text name
+end
+```
+or alternatively:
+```ruby
+my_custom_types  = {"Agipa119461"=>{"paper_size"=>"A4", "top_margin"=>36.57, "bottom_margin"=>0, "left_margin"=>20.551, "right_margin"=>20.551, "columns"=>3, "rows"=>8, "column_gutter"=>7.087, "row_gutter"=>0}} 
+
+Prawn::Labels.generate("names.pdf", names, :custom_types => my_custom_types, :type => "Agipa119461") do |pdf, name|
+  pdf.text name
+end
+```
+
 ## Contributors
 
 - [Jordan Byron](http://jordanbyron.com)
