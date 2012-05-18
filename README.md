@@ -4,8 +4,16 @@ Prawn/Labels takes the guess work out of generating labels using Prawn >= 0.12.0
 
 ## Install
 
+Using RubyGems
+
 ```bash
 $ gem install prawn-labels
+```
+
+Using Bundler
+
+```ruby
+gem "prawn-labels"
 ```
 
 ## Usage
