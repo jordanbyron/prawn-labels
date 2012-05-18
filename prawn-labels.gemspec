@@ -1,4 +1,4 @@
-PRAWN_LABELS_VERSION = "0.11.2.2"
+PRAWN_LABELS_VERSION = "0.11.3.0"
 
 Gem::Specification.new do |spec|
   spec.name = "prawn-labels"

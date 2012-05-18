@@ -25,6 +25,15 @@ module Prawn
       types_file = File.join(File.dirname(__FILE__), 'types.yaml')
       types      = YAML.load_file(types_file)
 
+
+      if options[:custom_types].is_a? Hash then
+        types.merge!(options[:custom_types])
+      else
+        if (options[:custom_types].is_a? String) && (File.exist? options[:custom_types])
+          types.merge!(YAML.load_file(options[:custom_types]))
+        end
+      end
+      
       unless @type = types[options[:type]]
         raise "Label Type Unknown '#{options[:type]}'"
       end

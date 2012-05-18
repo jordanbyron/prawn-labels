@@ -1,0 +1,11 @@
+# agipa 119641 labels, 63,5x33,9 mm coins arrondis - 3x8 = 24 per sheet
+Agipa119461:
+    paper_size: A4
+    top_margin: 36.57
+    bottom_margin: 0
+    left_margin: 20.551
+    right_margin: 20.551
+    columns: 3
+    rows: 8
+    column_gutter: 7.087
+    row_gutter: 0
