@@ -16,14 +16,14 @@ Avery7160:
     row_gutter: 0
 # Avery 5160 family
 Avery5160:
-    paper_size: A4
+    paper_size: LETTER
     top_margin: 36
     bottom_margin: 36
     left_margin: 15.822
     right_margin: 15.822
     columns: 3
     rows: 10
-    column_gutter: 10
+    column_gutter: 15
     row_gutter: 0
 # Standard #10 envelope
 Envelope10:
