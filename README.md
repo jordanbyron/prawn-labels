@@ -93,7 +93,7 @@ require 'prawn/labels'
 
 names = ["Jordan", "Chris", "Jon", "Mike", "Kelly", "Bob", "Greg"]
 
-Prawn::Labels.generate("names.pdf", names, {:type => "Avery5160", document: { page_layout: :landscape } }) do |pdf, name|
+Prawn::Labels.generate("names.pdf", names, type: "Avery5160", document: { page_layout: :landscape }) do |pdf, name|
   pdf.text name
 end
 ```
