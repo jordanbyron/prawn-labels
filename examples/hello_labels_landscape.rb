@@ -6,6 +6,6 @@ fancy_names = ["Jordan", "Chris", "Jon", "Mike", "Kelly", "Bob", "Greg",
                "Jordan", "Chris", "Jon", "Mike", "Kelly", "Bob", "Greg",
                "Jordan", "Chris", "Jon", "Mike", "Kelly", "Bob", "Greg"]
 Prawn::Labels.types["Avery5160"]["orientation"] = "landscape"
-Prawn::Labels.generate("hello_labels.pdf", fancy_names, :type => "Avery5160") do |pdf, name|
+Prawn::Labels.generate("hello_labels_landscape.pdf", fancy_names, { :type => "Avery5160", document: { page_layout: :landscape } }) do |pdf, name|
   pdf.text name
 end

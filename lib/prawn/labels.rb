@@ -48,23 +48,23 @@ module Prawn
       type["paper_size"]  ||= "A4"
       type["top_margin"]  ||= 36
       type["left_margin"] ||= 36
-      if type["orientation"] == "landscape"
-        type["page_layout"] = :landscape
+      
+      options[:document] ||= {}
+      
+      if options[:document][:page_layout] == :landscape
         type["top_margin"],type["right_margin"],type["bottom_margin"],type["left_margin"] = type["left_margin"],type["top_margin"],type["right_margin"],type["bottom_margin"]
         type["columns"],type["rows"] = type["rows"],type["columns"]
         type["column_gutter"],type["row_gutter"] = type["row_gutter"],type["column_gutter"]
-      else
-        type["page_layout"] = :portrait
       end
       options.merge!(:vertical_text => true) if type["vertical_text"]
 
-      @document = Document.new  :page_size      => type["paper_size"],
-                                :page_layout    => type["page_layout"],
+      @document = Document.new  options[:document].merge(
+                                :page_size      => type["paper_size"],
                                 :top_margin     => type["top_margin"],
                                 :bottom_margin  => type["bottom_margin"],
                                 :left_margin    => type["left_margin"],
-                                :right_margin   => type["right_margin"]
-
+                                :right_margin   => type["right_margin"])
+                                
       generate_grid @type
 
       data.each_with_index do |record, index|
