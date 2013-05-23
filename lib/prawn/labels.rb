@@ -51,11 +51,6 @@ module Prawn
       
       options[:document] ||= {}
       
-      if options[:document][:page_layout] == :landscape
-        type["top_margin"],type["right_margin"],type["bottom_margin"],type["left_margin"] = type["left_margin"],type["top_margin"],type["right_margin"],type["bottom_margin"]
-        type["columns"],type["rows"] = type["rows"],type["columns"]
-        type["column_gutter"],type["row_gutter"] = type["row_gutter"],type["column_gutter"]
-      end
       options.merge!(:vertical_text => true) if type["vertical_text"]
 
       @document = Document.new  options[:document].merge(
