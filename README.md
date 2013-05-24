@@ -1,4 +1,4 @@
-# Prawn/Labels: A simple label generator for Prawn PDFs
+# Prawn/Labels: Label generator for Prawn PDFs
 
 Prawn/Labels takes the guess work out of generating labels using Prawn >= 0.12.0
 
@@ -84,6 +84,22 @@ Prawn::Labels.generate("names.pdf", names, :type => "QuarterSheet") do |pdf, nam
 end
 ```
 
+### Prawn document options
+
+Prawn::Labels allows passing a hash of document options all the way through to Prawn. 
+
+```ruby
+require 'prawn/labels'
+
+names = ["Jordan", "Chris", "Jon", "Mike", "Kelly", "Bob", "Greg"]
+
+Prawn::Labels.generate("names.pdf", names, type: "Avery5160", document: { page_layout: :landscape }) do |pdf, name|
+  pdf.text name
+end
+```
+
+Other document properties that can be set via this hash can be found in the [Prawn Documentation](http://prawn.majesticseacreature.com/docs/0.11.1/Prawn/Document.html#method-c-new)
+
 ## Contributors
 
 - [Jordan Byron](http://jordanbyron.com)
@@ -92,3 +108,4 @@ end
 - [Forrest Zeisler](https://github.com/forrest)
 - [Jack Twilley](https://github.com/mathuin)
 - [Ori Pekelman](https://github.com/OriPekelman)
+- [Branden Gunn](https://github.com/engunneer)
