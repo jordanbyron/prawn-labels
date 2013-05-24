@@ -1,9 +1,8 @@
 require "rubygems"
-
-require 'rake'
-require "rake/gempackagetask"
+require "rubygems/package_task"
 
 spec = Gem::Specification.load "prawn-labels.gemspec"
-Rake::GemPackageTask.new(spec) do |pkg|
 
+Gem::PackageTask.new(spec) do |pkg|
+  
 end
