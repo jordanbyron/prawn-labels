@@ -110,7 +110,7 @@ LICENSE file.
 
 If you would like to help with developing Prawn/Labels, please get in touch!
 Contact Jordan through [GitHub (@jordanbyron)][gh],
-[Twitter (@jordan_byron)][twitter] or open up a [ticket][gh-issues]
+[Twitter (@jordan_byron)][twitter] or open up a [ticket][gh-issues].
 
 ### Submitting a Pull Request - We :heart: pull requests!
 
@@ -122,7 +122,7 @@ Contact Jordan through [GitHub (@jordanbyron)][gh],
 2. Fork the repo and copy it down to your local machine.
 3. Run `bundle install` in the root directory to install all of the
     dependencies.
-4. Create a topic branch (IE `prawn-2-support`).
+4. Create a topic branch (e.g. `prawn-2-support`).
 5. Implement your feature or bug fix.
 6. Add documentation for your feature or bug fix.
 7. Add tests for your feature or bug fix.
@@ -135,7 +135,7 @@ Contact Jordan through [GitHub (@jordanbyron)][gh],
 [gh]: https://github.com/jordanbyron
 [twitter]: http://twitter.com/jordan_byron
 
-__Note about our test suite__: It kinda stinks :poo: At the moment the tests
+__Note about our test suite__: It kinda stinks :poop: At the moment the tests
 just do a quick "Does this code run without raising any errors and at the end
 does it generate the PDF we expect it to generate" check. Eventually I'd like to
 add more robust tests, but at this point they are better than no tests! So
