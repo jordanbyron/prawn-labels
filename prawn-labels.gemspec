@@ -5,6 +5,11 @@ Gem::Specification.new do |spec|
   spec.version = PRAWN_LABELS_VERSION
   spec.platform = Gem::Platform::RUBY
   spec.summary = "Make labels using Prawn"
+  spec.homepage = "http://github.com/jordanbyron/prawn-labels"
+  spec.description = <<END_DESC
+  Prawn/Labels takes the guess work out of generating labels using Prawn
+END_DESC
+  
   spec.files =  Dir.glob("{examples,lib}/**/**/*") +
                       ["Rakefile", "prawn-labels.gemspec"]
   spec.require_path = "lib"
@@ -17,9 +22,6 @@ Gem::Specification.new do |spec|
   spec.authors = ["Jordan Byron"]
   spec.email = ["jordan.byron@gmail.com"]
   spec.rubyforge_project = "prawn-labels"
+
   spec.add_dependency('prawn', '>= 0.12.0')
-  spec.homepage = "http://github.com/jordanbyron/prawn-labels"
-  spec.description = <<END_DESC
-  Prawn/Labels takes the guess work out of generating labels using Prawn
-END_DESC
 end
