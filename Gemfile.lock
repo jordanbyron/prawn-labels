@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    prawn-labels (0.11.5.0)
-      prawn (>= 0.12.0)
+    prawn-labels (1.2.0)
+      prawn (~> 1.2.0)
 
 GEM
   remote: https://rubygems.org/
