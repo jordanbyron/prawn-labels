@@ -1,0 +1,65 @@
+PATH
+  remote: .
+  specs:
+    prawn-labels (0.11.5.0)
+      prawn (>= 0.12.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (2.12.1)
+    pdf-core (0.2.5)
+    prawn (1.2.1)
+      pdf-core (~> 0.2.5)
+      ttfunk (~> 1.2.0)
+    purdytest (1.0.0)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+      minitest (~> 2.2)
+    ttfunk (1.2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest
+  prawn-labels!
+  purdytest
