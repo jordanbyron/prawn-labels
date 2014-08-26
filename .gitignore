@@ -1,3 +1,4 @@
 examples/*.pdf
 pkg
 *.gem
+test/pdfs/*.pdf
