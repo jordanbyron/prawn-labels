@@ -25,7 +25,7 @@ Avery5160:
     rows: 10
     column_gutter: 15
     row_gutter: 0
-# Avery5163
+# Avery5163/5963
 Avery5163:
     paper_size: LETTER
     top_margin: 36
