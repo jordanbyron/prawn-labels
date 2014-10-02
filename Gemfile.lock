@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    prawn-labels (1.2.0)
+    prawn-labels (1.2.1)
       prawn (~> 1.2.0)
 
 GEM
