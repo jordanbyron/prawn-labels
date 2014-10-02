@@ -25,6 +25,17 @@ Avery5160:
     rows: 10
     column_gutter: 15
     row_gutter: 0
+# Avery5163/5963
+Avery5163:
+    paper_size: LETTER
+    top_margin: 38
+    bottom_margin: 38
+    left_margin: 16
+    right_margin: 16
+    columns: 2
+    rows: 5
+    column_gutter: 18
+    row_gutter: 0    
 # Standard #10 envelope
 Envelope10:
     paper_size: [297, 595.28]
