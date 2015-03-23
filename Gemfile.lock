@@ -2,15 +2,15 @@ PATH
   remote: .
   specs:
     prawn-labels (1.2.2)
-      prawn (>= 1.0.0, <= 2.0)
+      prawn (>= 1.0.0, < 2.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     minitest (2.12.1)
-    pdf-core (0.5.1)
-    prawn (2.0.0)
-      pdf-core (~> 0.5.1)
+    pdf-core (0.4.0)
+    prawn (1.3.0)
+      pdf-core (~> 0.4.0)
       ttfunk (~> 1.4.0)
     purdytest (1.0.0)
       minitest (~> 2.2)
@@ -54,6 +54,7 @@ GEM
       minitest (~> 2.2)
       minitest (~> 2.2)
       minitest (~> 2.2)
+    rake (10.4.2)
     ttfunk (1.4.0)
 
 PLATFORMS
@@ -63,3 +64,4 @@ DEPENDENCIES
   minitest
   prawn-labels!
   purdytest
+  rake
