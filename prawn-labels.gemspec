@@ -23,5 +23,5 @@ END_DESC
   spec.email = ["jordan.byron@gmail.com"]
   spec.rubyforge_project = "prawn-labels"
 
-  spec.add_dependency 'prawn', ['>= 1.0.0', '< 2.0']
+  spec.add_dependency 'prawn', ['>= 1.0.0', '~> 2.0.0']
 end
