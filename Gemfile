@@ -4,3 +4,7 @@ gemspec
 
 gem 'purdytest'
 gem 'minitest'
+
+group :development do
+  gem "rake"
+end
