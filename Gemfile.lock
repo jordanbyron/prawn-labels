@@ -10,7 +10,7 @@ GEM
     minitest (2.12.1)
     pdf-core (0.4.0)
     prawn (2.0.0)
-      pdf-core (~> 0.4.0)
+      pdf-core (~> 0.5.1)
       ttfunk (~> 1.4.0)
     purdytest (1.0.0)
       minitest (~> 2.2)
