@@ -40,7 +40,7 @@ For a full list of examples, take a look in the `examples` folder.
 ### Generating labels in a Rails controller
 
 ```ruby
-class MyController < Application Controller
+class LabelsController < ApplicationController
   def fancy_labels
     labels = Prawn::Labels.render(names, :type => "Avery5160") do |pdf, name|
       pdf.text name
