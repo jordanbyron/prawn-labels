@@ -62,6 +62,18 @@ Prawn::Labels.generate( "names.pdf", names, :type => "Avery5160",
 end
 ```
 
+### Offset text within each cell
+
+```ruby
+Prawn::Labels.generate( "names.pdf", names, :type => "Avery5160",
+                        :offset => [10,10]) do |pdf, name|
+  pdf.text name
+end
+```
+
+Offset is specified in points.  
+The current implementation of the offset option is incompatible with shrink-to-fit and vertical-text.
+
 ### Custom label types
 
 If the label type you need to use isn't defined in `prawn/labels/types.yaml`

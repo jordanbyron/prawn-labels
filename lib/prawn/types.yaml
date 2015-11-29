@@ -7,7 +7,7 @@
 Avery7160:
     paper_size: A4
     top_margin: 43.9
-    bottom_margin: 0
+    bottom_margin: 43.9
     left_margin: 19.843
     right_margin: 19.843
     columns: 3

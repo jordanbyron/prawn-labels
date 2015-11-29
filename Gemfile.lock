@@ -14,46 +14,6 @@ GEM
       ttfunk (~> 1.4.0)
     purdytest (1.0.0)
       minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
-      minitest (~> 2.2)
     ttfunk (1.4.0)
 
 PLATFORMS
@@ -63,3 +23,6 @@ DEPENDENCIES
   minitest
   prawn-labels!
   purdytest
+
+BUNDLED WITH
+   1.10.6
