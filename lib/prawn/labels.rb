@@ -41,6 +41,9 @@ module Prawn
     end
 
     def initialize(data, options = {}, &block)
+      if (options[:shrink_to_fit] == true || options[:vertical_text] == true) && options[:offset] != nil
+        raise "Offset option is incompatible with shrink_to_fit and vertical text"
+      end
       unless @type = Labels.types[options[:type]]
         raise "Label Type Unknown '#{options[:type]}'"
       end
@@ -96,7 +99,12 @@ module Prawn
     def create_label(index, record, options = {},  &block)
       p = row_col_from_index(index)
 
-      shrink_text(record) if options[:shrink_to_fit] == true
+      if options[:shrink_to_fit] == true
+        shrink_text(record)
+        offset = [0,0]
+      else
+        offset = options[:offset] || [5.0, 5.0]
+      end
 
       b = @document.grid(p.first, p.last)
 
@@ -109,7 +117,9 @@ module Prawn
           end
         end
       else
-        @document.bounding_box b.top_left, :width => b.width, :height => b.height do
+        xo, yo = offset
+        x, y = b.top_left
+        @document.bounding_box [x+xo, y-yo], :width => b.width-xo, :height => b.height-yo  do
           yield @document, record
         end
       end
