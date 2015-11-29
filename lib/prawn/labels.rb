@@ -48,9 +48,9 @@ module Prawn
       type["paper_size"]  ||= "A4"
       type["top_margin"]  ||= 36
       type["left_margin"] ||= 36
-      
+
       options[:document] ||= {}
-      
+
       options.merge!(:vertical_text => true) if type["vertical_text"]
 
       @document = Document.new  options[:document].merge(
@@ -59,7 +59,7 @@ module Prawn
                                 :bottom_margin  => type["bottom_margin"],
                                 :left_margin    => type["left_margin"],
                                 :right_margin   => type["right_margin"])
-                                
+
       generate_grid @type
 
       data.each_with_index do |record, index|
