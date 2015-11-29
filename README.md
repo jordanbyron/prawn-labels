@@ -37,15 +37,21 @@ This creates a document with a name from the names array in each label. The labe
 
 For a full list of examples, take a look in the `examples` folder.
 
-### Render a PDF file and send to browser
+### Generating labels in a Rails controller
 
 ```ruby
-labels = Prawn::Labels.render(names, :type => "Avery5160") do |pdf, name|
-  pdf.text name
-end
+class LabelsController < ApplicationController
+  def fancy_labels
+    labels = Prawn::Labels.render(names, :type => "Avery5160") do |pdf, name|
+      pdf.text name
+    end
 
-send_data labels, :filename => "names.pdf", :type => "application/pdf"
+    send_data labels, :filename => "names.pdf", :type => "application/pdf"
+  end
+end
 ```
+
+Notice here we use the `render` method rather than `generate`.
 
 ### Scale text to fit label
 
