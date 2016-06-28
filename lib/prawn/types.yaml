@@ -14,6 +14,18 @@ Avery7160:
     rows: 7
     column_gutter: 8.504
     row_gutter: 0
+
+#Avery 7165
+Avery7160:
+    paper_size: A4
+    top_margin: 50
+    bottom_margin: 25
+    left_margin: 40
+    right_margin: 10
+    columns: 2
+    rows: 4
+    row_gutter: 0
+
 # Avery 5160 family
 Avery5160:
     paper_size: LETTER
