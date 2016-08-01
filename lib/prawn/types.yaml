@@ -16,7 +16,7 @@ Avery7160:
     row_gutter: 0
 
 #Avery 7165
-Avery7160:
+Avery7165:
     paper_size: A4
     top_margin: 50
     bottom_margin: 25
