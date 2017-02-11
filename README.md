@@ -42,6 +42,8 @@ For a full list of examples, take a look in the `examples` folder.
 ```ruby
 class LabelsController < ApplicationController
   def fancy_labels
+    names = ["Jordan", "Chris", "Jon", "Mike", "Kelly", "Bob", "Greg"]
+  
     labels = Prawn::Labels.render(names, :type => "Avery5160") do |pdf, name|
       pdf.text name
     end
