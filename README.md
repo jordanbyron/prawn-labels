@@ -92,6 +92,20 @@ Prawn::Labels.generate("names.pdf", names, :type => "QuarterSheet") do |pdf, nam
 end
 ```
 
+**Remember**: Prawn expects all [measurements](https://github.com/prawnpdf/prawn/blob/2f894ade8e6a97453a6a77fdf5c7400ca4dd7428/lib/prawn/measurements.rb) to be provided in Postscript points
+So either provide them in points or do:
+
+``` ruby
+include Prawn::Measurements 
+Prawn::Labels.types = {
+  "QuarterSheet" => {
+    "paper_size" => "A4",
+    "top_margin" => mm2pt(13),
+    "columns"    => 2,
+    "rows"       => 2
+}}
+```
+
 ### Prawn document options
 
 Prawn::Labels allows passing a hash of document options all the way through to Prawn. 
