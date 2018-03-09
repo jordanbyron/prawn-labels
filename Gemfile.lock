@@ -7,14 +7,14 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    minitest (5.8.3)
-    pdf-core (0.6.1)
-    prawn (2.1.0)
-      pdf-core (~> 0.6.1)
-      ttfunk (~> 1.4.0)
+    minitest (5.11.3)
+    pdf-core (0.7.0)
+    prawn (2.2.2)
+      pdf-core (~> 0.7.0)
+      ttfunk (~> 1.5)
     purdytest (2.0.0)
       minitest (~> 5.5)
-    ttfunk (1.4.0)
+    ttfunk (1.5.1)
 
 PLATFORMS
   ruby
@@ -23,3 +23,6 @@ DEPENDENCIES
   minitest
   prawn-labels!
   purdytest
+
+BUNDLED WITH
+   1.16.0
