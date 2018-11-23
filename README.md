@@ -106,7 +106,7 @@ Prawn::Labels.generate("names.pdf", names, type: "Avery5160", document: { page_l
 end
 ```
 
-Other document properties that can be set via this hash can be found in the [Prawn Documentation](http://prawn.majesticseacreature.com/docs/0.11.1/Prawn/Document.html#method-c-new)
+Other document properties that can be set via this hash can be found in the [Prawn Documentation](http://prawnpdf.org/docs/0.11.1/Prawn/Document.html#method-c-new)
 
 ## Contributing
 
