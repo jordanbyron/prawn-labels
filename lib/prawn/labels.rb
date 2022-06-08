@@ -26,6 +26,8 @@ module Prawn
       def types=(custom_types)
         if custom_types.is_a? Hash
           types.merge! custom_types
+        elsif custom_types == :avery
+          types.merge! YAML.load_file(File.join(File.dirname(__FILE__), 'avery.yaml'))
         elsif custom_types.is_a?(String) && File.exist?(custom_types)
           types.merge! YAML.load_file(custom_types)
         end

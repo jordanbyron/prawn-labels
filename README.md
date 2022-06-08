@@ -92,6 +92,20 @@ Prawn::Labels.generate("names.pdf", names, :type => "QuarterSheet") do |pdf, nam
 end
 ```
 
+#### Avery Labels
+
+To use the other Avery labels (without trial and error for sizing) you must request access to Avery's [Template Alliance](https://www.avery.com/software/alliance-software-program). Approval typically takes 1-2 days. Upon approval, Avery will send you the *Alliance Spreadsheet* that can be used to generate the yaml file needed for Prawn::Labels.
+
+1. After approval, convert the *Alliance Spreadsheet* from `.xlsx` to `.csv`.
+2. Run `bin/import_avery <path_of_alliance_spreadsheet.csv>`
+3. Add the `:avery` to `Prawn::Labels.types` or the path to the generated yaml file if located somewhere else (defaults to `lib/prawn/avery.yaml`).
+
+```ruby
+Prawn::Labels.types = :avery
+```
+
+**NOTE** Due to the *Template Alliance Agreement* that Avery requires, we are not able to include these templates directly in the project. This is close as we can get without violating the signed agreement.
+
 ### Prawn document options
 
 Prawn::Labels allows passing a hash of document options all the way through to Prawn. 

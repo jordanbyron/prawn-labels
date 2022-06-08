@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+require 'csv'
+require 'yaml'
+
+avery_templates_path = ARGV[0]
+
+raise 'Usage `bin/import_avery <template_path>`. Missing `template_path`.' if !avery_templates_path
+
+templates = {}
+
+POINTS_PER_INCH = 72
+
+CSV.foreach(avery_templates_path, headers: true) do |row|
+	templates[row[row.headers.first] + row['productCode']] = {
+		'paper_size' => row['paperSize'].upcase,
+		'page_layout' => row['pageOrientation'].downcase,
+		'top_margin' => row['pageMarginTop'].to_f * POINTS_PER_INCH,
+		'bottom_margin' => row['pageMarginTop'].to_f * POINTS_PER_INCH,
+		'left_margin' => row['pageMarginLeft'].to_f * POINTS_PER_INCH,
+		'right_margin' => row['pageMarginLeft'].to_f * POINTS_PER_INCH,
+		'columns' => row['numberAcross'].to_i,
+		'rows' => row['numberDown'].to_i,
+		'column_gutter' => [(row['horizontalPitch'].to_f - row['panelWidth'].to_f) * POINTS_PER_INCH, 0].max,
+		'row_gutter' => [(row['verticalPitch'].to_f - row['panelHeight'].to_f) * POINTS_PER_INCH, 0].max,
+	}
+end
+
+File.open('lib/prawn/avery.yaml', 'wb') do |file|
+	file.write(templates.to_yaml)
+end

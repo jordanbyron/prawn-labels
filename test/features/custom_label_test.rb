@@ -41,4 +41,21 @@ describe "Custom Labels" do
 
     File.exists?(pdf_path).must_equal true
   end
+
+  it "can use Avery formats" do
+    skip unless File.exists?('lib/prawn/avery.yaml')
+
+    Prawn::Labels.types = :avery
+
+    [
+      'Avery00750',
+      'Avery99154'
+    ].each do |template|
+      Prawn::Labels.generate(pdf_path, names, :type => template) do |pdf, name|
+        pdf.text name
+      end
+
+      File.exists?(pdf_path).must_equal true
+    end
+  end
 end
