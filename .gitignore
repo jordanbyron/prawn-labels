@@ -2,3 +2,4 @@ examples/*.pdf
 pkg
 *.gem
 test/pdfs/*.pdf
+lib/prawn/avery.yaml
